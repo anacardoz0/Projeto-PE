@@ -27,22 +27,6 @@ Vacina (tomou a vacina? boolean)  */
 #include <stdbool.h>
 
 using namespace std;
-bool buscar (int email[1000][30]){
-	
-	char email_lido[1000][50];
-	FILE *arquivo
-	arquivo = fopen("email.txt");
-	while(!feof(arquivo)){
-		fscanf(arquivo,"%s\n", &email_lido);
-		if (strcmp(email_lido, email) ==0){
-		fclose(arquivo);
-		return true;
-		}
-	}
-	
-	fclose(arquivo);
-	return false;
-}
 
 int main(void){
 	
@@ -161,12 +145,30 @@ int main(void){
                 printf("Qual usuario voce quer editar?\n");
                 scanf("%d", &opcdousuario);
         break;
+	
     case 3: //excluir
         system("cls");
         printf("Voce escolhe a opcao 3! \n");
         break;
+	
     case 4: //buscar por email
 		system("cls");
+	bool buscar (int email[1000][30]){
+	
+	char email_lido[1000][50];
+	FILE *arquivo
+	arquivo = fopen("email.txt");
+	while(!feof(arquivo)){
+		fscanf(arquivo,"%s\n", &email_lido);
+		if (strcmp(email_lido, email) ==0){
+		fclose(arquivo);
+		return true;
+		}
+	}
+	
+	fclose(arquivo);
+	return false;
+}
 		
 		if (buscar(email[i])){
 		 printf("Email: ", email[i]);
@@ -176,6 +178,7 @@ int main(void){
 		}
 
         break;
+	
     case 5: //imprimir 
         system("cls"); /* cls - é utilizado para "limpar" a tela*/
         printf("~~~ CADASTRADOS ~~~\n");
@@ -193,18 +196,22 @@ int main(void){
                     printf("\n");
                 }
         break;
+	
     case 6: //backup
         system("cls");
         printf("Voce escolhe a opcao 6!\n");
         break;
+	
     case 7: //restaurar
         system("cls");
         printf("Voce escolhe a opcao 7!\n");
         break;
+	
     case 8: //encerrar programa 
         system("cls");
         printf("Voce pediu para SAIR, prencione qualquer tecla para continuar\n");
         break;
+	
     default:
         printf("Opcao INVALIDA, escolha um opcao VALIDA\n");
         printf("Precione qualquer tecla para voltar ao menu\n");
