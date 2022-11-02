@@ -27,7 +27,6 @@ Vacina (tomou a vacina? boolean)  */
 
 int main(void){
 	
-	
 	char opcao;
 	int i, id[1000];
 	int opcdousuario;
