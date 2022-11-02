@@ -152,30 +152,39 @@ int main(void){
         break;
 	
     case 4: //buscar por email
-		system("cls");
-	bool buscar (int email[1000][30]){
-	
-	char email_lido[1000][50];
-	FILE *arquivo
-	arquivo = fopen("email.txt");
-	while(!feof(arquivo)){
-		fscanf(arquivo,"%s\n", &email_lido);
-		if (strcmp(email_lido, email) ==0){
-		fclose(arquivo);
-		return true;
-		}
-	}
-	
-	fclose(arquivo);
-	return false;
+	   void buscar(){
+    int i,optiom;
+    char email[30];
+        do{
+    printf("---- MENU DE BUSCA ----\n");
+    printf("[1] BUSCAR PELO O EMAIL DO USUARIO");;
+    printf("[2] SAIR DO MENU DE BUSCA\n");
+    printf("Digite o numero da opcao desejada: \n");
+    scanf("%d",&option);
+    system("CLS");
+      
+	  switch(opica){
+        case 1:
+         printf("Digite o email do usuario: \n");
+         scanf("%s",&email);
+            for(i=0;i<1000;i++){
+                if((strcmp (email, email[i]) == 0) {
+                printf("_______________________\n");
+                printf("Nome: %s\n",nome[i]);
+                printf("Email: %s\n",email[i]);
+                printf("Sexo: %s\n",sexo[i]);
+                printf("endereco: %s\n",endereco[i]);
+                printf("Altura: %.2lf\n",altura[i]);
+                printf("Ja tomou a vacina: %s\n",vacina[i]);
+                        }
+                    }
+                    break;
+                case 2:
+                    break;
+            }
+        }while(option!=2);
+        system("CLS");
 }
-		
-		if (buscar(email[i])){
-		 printf("Email: ", email[i]);
-		}
-		else {
-		 printf ("")
-		}
 
         break;
 	
