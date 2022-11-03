@@ -30,7 +30,6 @@ using namespace std;
 
 int main(void){
 	
-	
 	char opcao;
 	int i, id[1000];
 	int opcdousuario;
@@ -41,7 +40,7 @@ int main(void){
  /* ~~~ MENU ~~~*/
  
  while (opcao != '8'){
- 	printf("----- ESCOLHA O DESEJADO -----\n");
+ 	printf("----- BEM VINDO AO MENU OPCOES -----\n");
  	printf("[1] CADASTRAR USUARIOS\n");
  	printf("[2] EDITAR USUARIOS\n");
  	printf("[3] EXCLUIR USUARIOS\n");
@@ -50,6 +49,7 @@ int main(void){
  	printf("[6] BACKUP DOS USUARIOS CADASTRADOS\n");
  	printf("[7] RESTAURACAO DOS DADOS\n");
  	printf("[8] SAIR\n\n");
+	printf("Escolha a opcao desejada: ");
  	scanf ("%c", &opcao);
  }
  
