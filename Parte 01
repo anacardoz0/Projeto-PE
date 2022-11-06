@@ -6,8 +6,8 @@
 03- exclua um usuário; 
 04- busque um usuário pelo email; ok
 05- imprima todos os usuários cadastrados;  ok
-06- faça backup dos usuários cadastrados;
-07- faça restauração dos dados;
+06- faça backup dos usuários cadastrados; ok
+07- faça restauração dos dados; ok
 
 ~ Dados do usuário:
 
@@ -20,22 +20,20 @@ Altura (double) => validação do campo: aceitar valores entre 1 e 2 m.
 Vacina (tomou a vacina? boolean)  */
 
 #include <stdio.h>
-#include <iostream>
 #include <string.h>
 #include <stdlib.h>
 #include <conio.h>
-#include <stdbool.h>
 
-using namespace std;
 
-int main(void){
+int main(){
 	
 	char opcao;
-	int i, id[1000];
+	int i, b, id[1000], idBackup[1000];
 	int opcdousuario;
 	char nome[1000][30], email[1000][30], sexo[1000][15], endereco[1000][50];
-	double altura[1000];
-	char vacina[1000];
+	char nomeBackup[1000][30], emailBackup[1000][30], sexoBackup[1000][15], enderecoBackup[1000][50];
+	double altura[1000], alturaBackup[1000];
+	char vacina[1000], vacinaBackup[1000];
  
  /* ~~~ MENU ~~~*/
  
@@ -74,7 +72,7 @@ int main(void){
 	
 	printf("\n%s", email[i]);
 		
-  printf("%d", strchr(email[i], '@')==0);'
+  printf("%d", strchr(email[i], '@')==0);
 		if(strchr(email[i], '@') == 0){
 			printf("Email invalido\n");
 			
@@ -134,6 +132,7 @@ int main(void){
                     printf("\n");
                 }
         break;
+    
         
     case 2: //editar
         system("cls");
@@ -152,7 +151,7 @@ int main(void){
         break;
 	
     case 4: //buscar por email
-	   void buscar(){
+	   void buscaremail(){
     int i,optiom;
     char email[30];
         do{
@@ -208,12 +207,37 @@ int main(void){
 	
     case 6: //backup
         system("cls");
-        printf("Voce escolhe a opcao 6!\n");
+            for(i=0; i<1000; i++){
+
+                strcpy(idBackup, id);
+                strcpy(nomeBackup, nome);
+                strcpy(emailBackup, email);
+                strcpy(sexoBackup, sexo);
+                strcpy(enderecoBackup, endereco);
+                strcpy(alturaBackup, altura);
+                strcpy(vacinaBackup, vacina);
+            }
+
+            printf("\n!!!BACKUP REALIZADO!!!\n");
         break;
 	
     case 7: //restaurar
         system("cls");
-        printf("Voce escolhe a opcao 7!\n");
+        printf("Qual usuario voce deseja restaurar?:\n");
+            for(i=0; i<1000; i++){
+                printf("\nID: %d || Nome: %s",email, id[i], nome[i]);
+            }
+            scanf("%d", &opcdousuario);
+            fflush(stdin);
+
+            strcpy(nome[opcdousuario], nomeBackup[userOpt]);
+            strcpy(email[opcdousuario], emailBackup[userOpt]);
+            strcpy(sexo[opcdousuario], sexoBackup[userOpt]);
+            strcpy(endereco[opcdousuario], enderecoBackup[userOpt]);
+            altura[opcdousuario] = alturaBackup[userOpt];
+            vacina[opcdousuario] = vacinaBackup[userOpt];
+
+            printf("\n!!!RESTAURACAO REALIZADA!!!\n");
         break;
 	
     case 8: //encerrar programa 
