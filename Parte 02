@@ -1,0 +1,331 @@
+#include <stdio.h>
+#include <string.h>
+#include <conio.h>
+#include <stdlib.h>
+#define MAX 1000
+
+struct endereco{
+	char* rua[MAX][30], cidade[MAX][30], estado[MAX][30], cep [MAX][8];
+};
+
+struct cadastra{
+    int i, id[MAX];
+    char* nomeus[MAX][30], email[MAX][50], sexo[MAX][15]; 
+    struct endereco end[MAX]; 
+    char vacina[MAX][3];
+    double altura;
+};
+
+struct cadastraBackup{
+
+    int id;
+    char nomebk[MAX][30], email[MAX][30], sexo[MAX][15], vacina[MAX][3];
+    double altura;
+    struct endereco end[MAX];
+	};
+
+struct cadastra cad[MAX];
+int quantp=0;
+
+void cadastraUsuario(struct cadastra usuario){
+    cad[quantp]=usuario;
+    quantp++;
+}
+
+struct cadastra leDados(){
+    struct cadastra us;
+    
+	fflush(stdin); //nome e ID
+      printf("Digite o nome: \n");
+      fgets(us.nomeus[MAX][30], stdin); 
+    us.id = 1 + rand()%999;
+      printf("ID do usuario  %d\n",us.id);
+     
+	
+	fflush(stdin); //email
+      printf("Digite o email: \n");
+      fgets(us.email[MAX][30], stdin);
+         printf("%s", strchr(email[MAX], '@') ==0);
+		  if(strchr(email[MAX], '@') == 0){
+			printf("Email invalido\n");
+			
+			printf("Digite o email: ");
+	 	    fgets(email[MAX][50],stdin);
+		
+		}
+		else{
+			printf("Email valido\n");
+		}	 
+    
+	fflush(stdin); // sexo
+      printf("Informe o sexo (FEMININO, MASCULINO, NÃO DECLARAR): \n");
+     fgets(us.sexo[MAX][15],stdin);
+		
+		if(strcmp(sexo[MAX], "Feminino") == 0 && strcmp(sexo[MAX], "Masculino") == 0 && strcmp(sexo[MAX], "Feminino") == 0){
+			printf("Sexo invalido\n");
+			
+			printf("Informe o sexo (Feminino, Masculino e Não declarar):");
+	 		fgets(sexo[MAX][15],stdin);
+		}
+		else{
+			printf("Sexo VALIDO!");
+		}
+      
+	  struct endereco leDados (){
+    struct endereco end;
+    printf("\n-----INFORME O ENDEREÇO----\n");  
+    fflush(stdin); //Rua
+      printf("Informe a Rua: \n");
+      fgets(end.rua[MAX][30], stdin);
+      
+    fflush(stdin); //Cidade
+      printf("Informe a cidade: \n");
+      fgets(end.cidade[MAX][30], stdin);
+      
+    fflush(stdin); //Estado
+      printf("Informe o estado: \n");
+      fgets(end.estado[MAX][30], stdin);
+      
+    fflush(stdin); //CEP
+      printf("Informe o CEP: \n");
+      fgets(end.cep, stdin); end.cep[MAX][8]
+      
+      return end;
+	  }
+	  
+	  fflush(stdin); // altura
+      printf("Informe a altura: \n");
+      fgets(us.altura,stdin);
+      if(altura[i] > 1.00 && altura[i] < 2.00){
+			printf("Valido\n"); 		
+		 }
+	  else{
+		printf("Altura INVALIDA\n");
+		
+		printf("Informe a altura:");
+		fgets(us.altura,stdin);
+		 }
+    
+    fflush(stdin); //vacina
+      printf("Ja tomou a vacina? \n");
+    fgets(us.vacina[MAX][3],stdin);
+     
+    
+	fflush(stdin);
+    system("CLS");
+    
+return us;
+}
+void buscar(){
+    int i,option;
+    char* emailp[50];
+        while(opica!=3);{
+            printf("-----MENU DE BUSCA-----\n");
+            printf("[1] BUSCAR PELO EMAIL DO USUARIO\n");;
+            printf("[2] IMPRIMIR USUARIOS CADASTRADOS");
+            printf("[3] SAIR DO MENU DE BUSCA\n");
+            printf("Digite o numero da opcao desejada: \n");
+            scanf("%d",&option);
+            system("CLS");
+            switch(option){
+                case 1:
+                    printf("Digite o email do usuario: \n");
+                    fgets(emailp[50],stdin);
+                    for(i=0;i<quantp;i++){
+                        if((strcmp (emailp, cad[i].email) == 0)
+                            printf("___________________________________\n");
+                            printf("Nome do usuario:       %s\n",cad[i].nome);
+                            printf("ID do usuario:         %s\n",cad[i].id);
+                            printf("Email do usuario:      %s\n",cad[i].email);
+                            printf("Sexo do usuario: 	   %s\n",cad[i].sexo);
+                            printf("Enderco do usuario:    %s\n",cad[i].end);
+                            printf("Altura do usuario:     %.2lf\n",cad[i].altura);
+                            printf("Esta vacinado?  	   %s\n",cad[i].vacina);
+                            printf("___________________________________\n");
+                        }
+                        break;
+            
+                case 2:
+				 printf("Lista de usuarios cadastrados\n");
+                    for(i=0;i<quantp;i++){
+                        printf("+++++++++++++++++++++++\n");
+                            printf("Nome do usuario:       %s\n",cad[i].nome);
+                            printf("ID do usuario:         %s\n",cad[i].id);
+                            printf("Email do usuario:      %s\n",cad[i].email);
+                            printf("Sexo do usuario: 	   %s\n",cad[i].sexo);
+                            printf("Enderco do usuario:    %s\n",end[i].endereco);
+                            printf("Altura do usuario:     %.2lf\n",cad[i].altura);
+                            printf("Esta vacinado?  	   %s\n",cad[i].vacina);
+                        printf("+++++++++++++++++++++++\n");
+                    }
+                    break;
+		
+                case 3:
+				break;
+			 }
+                   
+                }
+            
+        system("CLS");
+}
+void editar (){
+    int i;
+    char* nomeed[30]; 
+    
+    fflush(stdin);
+    printf("Digite o nome do usuario que deseja EDITAR: ");
+    fgets(nomeed[30],stdin);
+    
+    for(i=0;i<quantp;i++){
+        if(strcmp (nomeed, cad[i].nomeus) == 0){ 
+            fflush(stdin);
+            printf("Informe o nome: \n");
+            scanf("%s",&cad[i].nomeus);
+            cad[i].id = 1 + rand()%999;
+            printf("ID:  %d\n",cad[i].id);
+            fflush(stdin);
+            printf("Email: \n");
+            scanf("%s",&cad[i].email);
+            fflush(stdin);
+            printf("Sexo: \n");
+            scanf("%s",&cad[i].sexo);
+            printf("Endereco: \n");
+            scanf("%s",&end[i].endereco);
+            fflush(stdin);
+            printf("Altura: \n");
+            scanf("%lf",&cad[i].altura);
+            fflush(stdin);
+            printf("Esta Vacinado? \n");
+            scanf("%s",&cad[i].vacina);
+        }
+    }
+    system("CLS");
+}
+void excluir () {    			
+	int i,cont=0;
+	char* emaile[50];
+	printf("Veja email do usuario que você deseja remover\n");
+	buscar();                   
+	printf("Informe o email do usuario que se deseja EXCLUIR: "); 
+	 fgets(emaile[50],stdin);
+	for(i = 0 ; i < quantp ; i++){
+
+		if (cad[i].email == emaile) {  // Compara o email relacionado e exclui
+
+			cad[i] = cad[i+1];                // Realoca a Memória
+
+            quantp--;                         // decrementa o indice do vetor para que ocupe o cadastro removido
+            cont++;
+
+		}
+	}
+	if(cont>0){
+        printf ("\n\nUSUARIO EXCLUIDO COM SUCESSO !");
+        printf ("\nPressione ENTER Para Continuar !");
+        setbuf(stdin,NULL);
+        getchar ();
+        system ("cls");
+    }else {
+        printf("Esse email nao esta cadastrado\n"); 
+    }
+      system("CLS");
+}
+void backup() { 
+ struct cadastraBackup[MAX];
+struct cadastra back[MAX]; 
+int quantp=0;
+int i;
+ 
+ for(i=0;i<quantp;i++){
+ 
+
+            cadastraBackup.id[i] = cad.id
+                strcpy(cadastraBackup[i].nomebk, cad.nomeus); 
+                strcpy(cadastraBackup[i].email, cad.email); 
+                strcpy(cadastraBackup[i].sexo.sexo, cad.sexo); 
+                strcpy(cadastraBackup[i].end.rua, cad.end.rua); 
+                strcpy(cadastraBackup[i].end.cidade, cad.end.cidade); 
+                strcpy(cadastraBackup[i].end.estado, cad.end.estado);
+                strcpy(cadastraBackup[i].end.cep, cad.end.cep); 
+                cadastraBackup[i].altura = cad.altura; 
+               cadastraBackup[i].vacina = cad.vacina; 
+            }
+             printf("\n\nBACKUP REALIZADO COM SUCESSO !");
+             system("CLS");
+}
+void restaurar(){
+	int i;
+	int opt;
+	printf("De qual usario deseja RESTAURAR os dados?: \n"); 
+            for(i=0;i<quantp;i++){
+                printf("\n ID: %d Nome: %s",i, cad[i].id, cad[i].nomeus); 
+            }
+            scanf("%d", &opt);
+            fflush(stdin);
+
+            cad[i].id = cadastraBackup[i].id; cad[i].id = cadastraBackup[i].id
+            strcpy(cad[opt].nomeus, cadastraBackup[opt].nomebk); cadastraBackup[opt].vacina
+            strcpy(cadastro[userOpt].email, cadastraBackup[opt].email);
+            strcpy(cad[opt].sexo, cadastraBackup[opt].sexo);
+            strcpy(cad[opt].end.rua, cadastraBackup[opt].end.rua);
+            strcpy(cad[opt].end.cidade, cadastraBackup[opt].end.cidade);
+            strcpy(cad[opt].end.estado, cadastraBackup[opt].end.estado);
+            strcpy(cad[opt].end.cep, cadastraBackup[opt].end.cep);
+            cad[opt].altura = cadastraBackup[opt].altura;
+            cad[opt].vacina = cadastraBackup[opt].vacina;
+
+            printf("\n\nRESTAURACAO REALIZADA COM SUCESSO !");  
+            printf("\nPressione ENTER para continuar!\n");
+            system("CLS");
+
+}
+int main(){
+    int opcao;
+    struct cadastra novoUsuario
+    while(opcao ! = 7){
+        printf("----ESCOLHA O QUE DESEJA----\n\n"); 
+        printf("___________________________________\n");
+        printf("[1] CADASTRAR USUARIO\n"); 
+        printf("[2] EDITAR USUARIO\n"); 
+        printf("[3] EXCLUIR USUARIO\n");  
+        printf("[4] BUSCAR USUARIO POR EMAIL\n");  
+        printf("[5] BACKUP DOS USUARIOS CADASTRADOS\n");  
+        printf("[6] RESTAURACAO DOS DADOS\n"); 
+        printf("[7] FINALIZAR\n");
+        printf("___________________________________\n");
+        printf("Digite o numero da opcao desejada: \n");  
+        scanf("%d",&opcao);
+        system("CLS");
+        switch(opcao){
+            case 1:
+                novoUsuario=leDados();
+                cadastraUsuario(novoUsuario);
+                break;
+            case 2:
+                editar();
+                break;
+            case 3:
+                excluir();
+                break;
+            case 4:
+            	buscar();
+            	break;
+            case 5:
+                backup();
+                break;
+            case 6:
+               restaurar();
+                break;
+            case 7:
+                printf("Obrigado!\n");
+                break;
+                
+            default:
+                printf("Opcao invalida!\nTente novamente:\n");
+                break;
+        }
+    }
+
+system("PAUSE");
+return 0;
+}
